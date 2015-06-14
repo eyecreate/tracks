@@ -22,7 +22,9 @@ ADD ./Gemfile /var/www/tracks/
 
 ADD ./site.yml /var/www/tracks/config/
 
-ADD ./start.sh /usr/bin
+ADD ./start.sh /
+
+RUN chmod +x /start.sh
 
 # Setup Tracks
 #######################
@@ -52,4 +54,4 @@ VOLUME ["/var/www"]
 
 EXPOSE 80
 
-CMD "bash" "/usr/bin/start.sh"
+CMD "bash" "/start.sh"
