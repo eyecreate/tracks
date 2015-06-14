@@ -17,6 +17,12 @@ It utilizes mostly native Ubuntu 14.04 packages, thus rebuilding it will provide
 
 For production use it is highly recommended to update the `site.yml.template` within the build repo, rename it to `site.yml` then rebuild the container.
 
+Setting these docker environment variables will allow you to substitute at runtime without using the template:
+
+TRACKS_TOKEN
+TRACKS_SALT
+TRACKS_DB
+
 Example on how to run the Tracks container:
 
      docker run -d --name=tracks -p 80:80 staannoe/tracks:stable

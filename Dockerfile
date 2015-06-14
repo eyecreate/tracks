@@ -4,7 +4,7 @@ MAINTAINER Stig Tore Aannoe <staannoe@gmail.com>
 
 RUN apt-get update
 
-RUN apt-get install -y ruby rubygems-integration bundler sqlite3 libsqlite3-dev build-essential curl unzip 
+RUN apt-get install -y ruby rubygems-integration bundler sqlite3 libsqlite3-dev build-essential curl unzip
 
 RUN apt-get install -y apache2 libapache2-mod-passenger
 
@@ -22,6 +22,7 @@ ADD ./Gemfile /var/www/tracks/
 
 ADD ./site.yml /var/www/tracks/config/
 
+ADD ./start.sh /usr/bin
 
 # Setup Tracks
 #######################
@@ -51,4 +52,4 @@ VOLUME ["/var/www"]
 
 EXPOSE 80
 
-CMD "dockerize" "-stdout=/var/log/apache2/access.log", "-stdout=/var/www/tracks/log/production.log", "-stderr=/var/log/apache2/error.log" "/usr/sbin/apache2ctl" "-D FOREGROUND"
+CMD "bash" "/usr/bin/start.sh"
